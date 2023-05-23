@@ -31,7 +31,7 @@ try:
     client.admin.command('ping')
     print("Pinged your deployment. You successfully connected to MongoDB!")
 
-    db = client.memes
+    db = client.cloud
     print("MongoDB Connected successfully!")
 except:
     print("Could not connect to MongoDB")
