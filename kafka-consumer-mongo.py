@@ -11,7 +11,7 @@ import subprocess
 
 
 # replace here with your mongodb url 
-uri = "mongodb+srv://babyguma:GUMG990514@cluster0.c0toty4.mongodb.net/?retryWrites=true&w=majority"
+uri = "mongodb+srv://babyguma:GUMG990514@cluster0.c0toty4.mongodb.net/"
 
 
 # Create a new client and connect to the server
