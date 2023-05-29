@@ -14,7 +14,7 @@ import subprocess
 uri = "mongodb+srv://Guma:1234@cloud.g2vb4oz.mongodb.net/?retryWrites=true&w=majority"
 
 
-# Create a new client and connect to the server
+# Create a new client and connect to the serve
 #client = MongoClient(uri, server_api=ServerApi('1'))
 # Send a ping to confirm a successful connection
 
