@@ -8,7 +8,7 @@ from pymongo.server_api import ServerApi
 
 import json
 
-uri = "mongodb+srv://Guma:1234@cloud.g2vb4oz.mongodb.net/?retryWrites=true&w=majority"
+uri = "mongodb+srv://guma:12345@cludd.1p2lgqb.mongodb.net/"
 #Local = "mongodb://127.0.0.1:27017"
 #URL del profe = "mongodb+srv://adsoft:adsoft-sito@cluster0.kzghgph.mongodb.net/?retryWrites=true&w=majority"
 
