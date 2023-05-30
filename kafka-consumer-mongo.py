@@ -29,11 +29,11 @@ try:
     client.admin.command('ping')
     print("Pinged your deployment. You successfully connected to MongoDB!")
 
-    db = client.cloud
+    db = client.python
     print("MongoDB Connected successfully!")
 except:
     print("Could not connect to MongoDB")
-consumer = KafkaConsumer('test',bootstrap_servers=['my-kafka.babyguma.svc.cluster.local:9092'])
+consumer = KafkaConsumer('test',bootstrap_servers=['my-kafka.babyguma.svc.cluster.local:9092'])#'my-kafka-0.my-kafka-headless.kafka-adsoftsito.svc.cluster.local:9092'])
 # Parse received data from Kafka
 for msg in consumer:
     record = json.loads(msg.value)
@@ -44,23 +44,23 @@ for msg in consumer:
     try:
        meme_rec = {'name':name }
        print (meme_rec)
-       meme_id = db.memes_info.insert_one(meme_rec)
+       meme_id = db.socer_info.insert_one(meme_rec)
        print("Data inserted with record ids", meme_id)
     except:
        print("Could not insert into MongoDB")
 
     try:
-        agg_result = db.memes_info.aggregate(
+        agg_result = db.socer_info.aggregate(
             [{
                 "$group" : 
                 { "_id" : "$name",
-                  "n" : {"$sum":1}
-            }}
-        ])
-        db.memes_summary.delete_many({})
+                  "n" : {"$sum":1}}
+            }]
+        )
+        db.socer_summary.delete_many({})
         for i in agg_result:
             print(i)
-            summary_id = db.memes_summary.insert_one(i)
+            summary_id = db.socer_summary.insert_one(i)
             print("Summary inserted with record ids", summary_id)
        #meme_rec = {'name':name }
        #print (meme_rec)
@@ -70,4 +70,3 @@ for msg in consumer:
         print(f'group by caught {type(e)}: ')
         print(e)
        #print("Could not insert into MongoDB")
-
