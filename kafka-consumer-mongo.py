@@ -54,9 +54,9 @@ for msg in consumer:
             [{
                 "$group" : 
                 { "_id" : "$name",
-                  "n" : {"$sum":1}}
-            }]
-        )
+                  "n" : {"$sum":1}
+            }}
+        ])
         db.memes_summary.delete_many({})
         for i in agg_result:
             print(i)
