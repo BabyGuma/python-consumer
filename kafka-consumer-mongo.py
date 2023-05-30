@@ -50,20 +50,19 @@ for msg in consumer:
        print("Could not insert into MongoDB")
 
     try:
-        agg_result = db.cludd_info.aggregate(
+        agg_result = db.cloud_info.aggregate(
             [{
                 "$group" : 
                 { "_id" : "$name",
                   "n" : {"$sum":1}}
             }]
         )
-        db.cludd_summary.delete_many({})
+        db.cloud_summary.delete_many({})
         for i in agg_result:
             print(i)
-            summary_id = db.cludd_summary.insert_one(i)
+            summary_id = db.cloud_summary.insert_one(i)
             print("Summary inserted with record ids", summary_id)
 
     except Exception as e:
         print(f'group by caught {type(e)}: ')
         print(e)
-        
