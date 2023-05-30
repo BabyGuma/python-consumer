@@ -44,29 +44,26 @@ for msg in consumer:
     try:
        meme_rec = {'name':name }
        print (meme_rec)
-       meme_id = db.socer_info.insert_one(meme_rec)
+       meme_id = db.cludd_info.insert_one(meme_rec)
        print("Data inserted with record ids", meme_id)
     except:
        print("Could not insert into MongoDB")
 
     try:
-        agg_result = db.socer_info.aggregate(
+        agg_result = db.cludd_info.aggregate(
             [{
                 "$group" : 
                 { "_id" : "$name",
                   "n" : {"$sum":1}}
             }]
         )
-        db.socer_summary.delete_many({})
+        db.cludd_summary.delete_many({})
         for i in agg_result:
             print(i)
-            summary_id = db.socer_summary.insert_one(i)
+            summary_id = db.cludd_summary.insert_one(i)
             print("Summary inserted with record ids", summary_id)
-       #meme_rec = {'name':name }
-       #print (meme_rec)
-       #meme_id = db.memes_info.insert_one(meme_rec)
-       #print("Data inserted with record ids", meme_id)
+
     except Exception as e:
         print(f'group by caught {type(e)}: ')
         print(e)
-       #print("Could not insert into MongoDB")
+        
